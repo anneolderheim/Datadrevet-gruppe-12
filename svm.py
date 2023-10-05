@@ -11,9 +11,9 @@ from sklearn.metrics import confusion_matrix, classification_report
 # Load the dataset
 data = pd.read_csv("graduation_dataset2TokyoDrift.csv")
 target_mapping = {
-    "Dropout": 1,
-    "Enrolled": 1,
-    "Graduate": 1
+     "Dropout": 1,
+     "Enrolled": 1,
+     "Graduate": 1
 }
 
 data.replace({"Target": target_mapping}, inplace=True)
@@ -24,7 +24,7 @@ print(data.info())
 training_set, test_set = train_test_split(data, test_size=0.2, random_state=1)
 
 # Extract features and labels
-column=31
+column= 29
 X_train = training_set.iloc[:, 0:column].values
 Y_train = training_set.iloc[:, column].values
 X_test = test_set.iloc[:, 0:column].values
@@ -35,7 +35,7 @@ le = LabelEncoder()
 Y_train = le.fit_transform(Y_train)
 
 # Train the SVM classifier
-classifier = SVC(C=1000)
+classifier = SVC()
 classifier.fit(X_train, Y_train)
 
 # Predict on the test set
